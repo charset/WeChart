@@ -1,0 +1,17 @@
+<view>
+  <image src="../../images/1.jpg" class="floatImage" />
+  <view class="yourProcess"><text>你的得分</text></view>
+  <view class="yourScore">
+    <text wx:if="{{total>0}}">{{right}}/{{total}}</text>
+    <text wx:else>你还未完成本次测试</text>
+  </view>
+  <view class="frameHall">
+    <text>名人堂</text>
+    <view class="detail" wx:for-items="{{frameHall}}">
+      <image src="{{item.avatarUrl}}" class="userinfo-avatar" />
+      <span class="nickName">{{item.nickname}}</span>
+      <text class="score">{{item.score}}</text>
+    </view>
+  </view>
+   <button class="fixedButton0" type="default" bindtap="MainPage">返回首页</button>
+</view>

@@ -1,0 +1,66 @@
+/**index.wxss**/
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: navy;
+}
+
+.usermotto {
+  margin-top: 3px;
+  text-align: center;
+}
+
+.functions {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.floatImage {
+  position: fixed;
+  top: 100px;
+  z-index: -1;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 5px;
+}
+
+.webref {
+  text-align: center;
+  color: darkgray;
+  font-size: 8pt;
+  font-style: underline;
+  margin-bottom: 1px;
+  display: block;
+}
+
+.icps {
+  text-align: center;
+  color: gray;
+  font-size: 9pt;
+  margin-bottom: 1px;
+  display: block;
+}
+
+.rm {
+  text-align: center;
+  color: black;
+  font-size: 9pt;
+  display: block;
+}

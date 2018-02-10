@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <image src="../../images/0.jpg" class="floatImage" />
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称后请重新打开小程序 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">欢迎“{{userInfo.nickName}}”，AKA[小白鼠]</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="functions">
+    <button bindtap="StartTest" disabled="{{cmdStartDisabled}}" type="primary">开始测试</button>
+    <button type="default" bindtap="ShowScore" disabled='{{cmdSummaryDisabled}}'>查看得分</button>
+    <button type="default" disabled='true'>我要投诉</button>
+  </view>
+  <view class="bottom">
+    <block>
+      <text class="webref">https://page404.top/</text>
+      <text class="icps">ICPS:</text>
+      <text class="rm">架构状元狼</text>
+    </block>
+  </view>
+</view>

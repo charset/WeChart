@@ -1,0 +1,65 @@
+/* pages/contest/summary.wxss */
+
+.yourProcess {
+  text-align: center;
+  color: darkslategray;
+  margin-top: 64px;
+  font-size: 32pt;
+  /*background-color: darkkhaki;*/
+}
+
+.yourScore {
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+  /*background-color: darkkhaki;*/
+}
+
+.floatImage {
+  position: fixed;
+  top: 1px;
+  z-index: -1;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.frameHall {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.detail {
+  margin-top: 10px;
+  margin-left: 32px;
+  margin-right:32px;
+  margin-bottom: 10px;
+  text-align: left;
+  height:58px;
+}
+.userinfo-avatar {
+  width: 64px;
+  height: 64px;
+  margin-left: 32px;
+  border-radius: 50%;
+  float: left;
+}
+.nickName{
+  width: 128px;
+  margin-top:16px;
+  margin-left:8px;
+  overflow:hidden;
+  float:left;
+}
+.score{
+  /*width:128px;*/
+  margin-top:16px;
+  margin-left:8px;
+  float:left;
+  clear:right;
+}
+.fixedButton0 {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}

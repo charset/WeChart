@@ -1,0 +1,55 @@
+button {
+  margin: 5px, 5px, 5px, 5px;
+}
+
+.content {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 18pt;
+  line-height: 30pt;
+}
+
+.index {
+  color: red;
+}
+
+.options {
+  color: darkslategray;
+}
+
+.buttonGroup {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.fixedButton0 {
+    position: fixed;
+    bottom: 45px;
+    width: 100%;
+}
+.fixedButton1 {
+    position: fixed;
+    bottom: 56px;
+    width: 100%;
+}
+.fixedButton2 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.show{
+  display:inherit;
+}
+.hide{
+  display:none;
+}
+
+.floatImage {
+  position: fixed;
+  top: 1px;
+  z-index: -1;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+}

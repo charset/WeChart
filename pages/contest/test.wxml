@@ -1,0 +1,31 @@
+<scroll-view>
+  <image src="../../images/2.jpg" class="floatImage" />
+  <view class="testTypePrompt">{{testTypePrompt}}</view>
+  <view class="content">
+    <text class="index">第{{ContestItem.branchId + 1}}题. </text>
+    <text>{{ContestItem.content}}</text>
+    <radio-group bindchange="BindChangeRadio" class="{{ContestItem.radioClass}}">
+      <view wx:for-items="{{radioItems}}" wx:key-items="*this">
+        <radio value="{{item.name}}" hidden="{{item.hidden}}" checked="{{item.checked}}" />
+        <label for="{{item.name}}">
+          <text class="options">{{item.value}}</text> </label>
+      </view>
+    </radio-group>
+    <checkbox-group bindchange="BindChangeCheckbox" class="{{ContestItem.checkboxClass}}">
+      <view wx:for-items="{{checkboxItems}}" wx:key-items="*this">
+        <checkbox value="{{item.name}}" hidden="{{item.hidden}}" checked='{{item.checked}}' />
+        <label for="{{item.name}}">
+          <text class="checkboxes">{{item.value}}</text>
+        </label>
+      </view>
+    </checkbox-group>
+    <view>
+      <textarea maxlength='128' placeholder='在这里写下简要叙述' class="{{ContestItem.answerClass}} ">{{contentAnswer}}</textarea>
+    </view>
+  </view>
+  <view class="buttonGroup0">
+    <button class="fixedButton0" type="primary" bindtap="Next">下一题</button>
+    <button class="fixedButton1" type="warn" bindtap="ResetCurrent" hidden="hide">重置当前题</button>
+    <button class="fixedButton2" type="default" bindtap="Previous">上一题</button>
+  </view>
+</scroll-view>
