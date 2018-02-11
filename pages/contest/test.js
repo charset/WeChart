@@ -41,7 +41,7 @@ Page({
         for (var i = 0; i < this.data.ContestItem.branchCount; i++) {
           if (this.data.checkboxItems[i].checked) selected += 1 << i;
         }
-        console.log("SELECTED: "+ selected);
+        console.log("SELECTED: " + selected);
         if (selected > 0) {
           this.Submit(selected);
           return;
@@ -80,40 +80,49 @@ Page({
                         if (deal.data == 1)
                           wx.reLaunch({ url: '/pages/contest/summary' });
                         else {
-                          wx.showModal({ title: "(-.-)|||", content: "似乎还没法提交呢..", showCancel: false, confirmText: "好吧" });
+                          wx.showModal({
+                            title: "DealUnsuccessful", content: "似乎还没法提交呢..",
+                            showCancel: false, confirmText: "好吧"
+                          });
                         }
                       },
                       fail: () => {
-                        wx.showModal({ title: "XXXX", content: "似乎小好又开小差了.", showCancel: false, confirmText: '朕怎知道' });
+                        wx.showModal({
+                          title: "DealFail", content: "似乎小好又开小差了.",
+                          showCancel: false, confirmText: '朕怎知道'
+                        });
                       }
-                    })
-
+                    });
                   }
                 }
-              });
+              });//endof ShowModal
 
             } else {
-              console.log(res.rowsAffected);
               if (res.rowsAffected >= 0) {
-                console.log("------------"); console.log(Q);
                 app.globalData.currentIndex++; Q.showTestPage();
-                console.log(app.globalData.currentIndex);
               } else {
-                wx.showModal({ title: "上传选择答案错误", content: "似乎小好又开小差了.", showCancel: false, confirmText: '朕怎知道' });
+                wx.showModal({
+                  title: "上传选择答案错误", content: "似乎小好又开小差了.",
+                  showCancel: false, confirmText: '朕怎知道'
+                });
               }
             }
-          },
+          },//endof getlocation.success.request.success
           fail: function () {
-            wx.showModal({ title: "连接错误", content: "似乎无法连接到服务器. 你可以:查看你的网路设置/联系作者是否欠费.", showCancel: false, confirmText: "朕知道了" });
+            wx.showModal({
+              title: "连接错误", showCancel: false, confirmText: "朕知道了",
+              content: "似乎无法连接到服务器. 你可以:查看你的网路设置/联系作者是否欠费."
+            });
           }
-        });
+        });//endof getlocation.success.request
+      },//endof getlocation.success
+      fail: () => {
+        wx.reLaunch("/pages/index/index");
       }
     });
   },
   BindChangeRadio: function (e) {
-    var index = e.detail.value.charCodeAt() - 'A'.charCodeAt();
-    console.log('radio change event: ' + e.detail.value + " , On index=" + index);
-    var changeUI = {};
+    var index = e.detail.value.charCodeAt() - 'A'.charCodeAt(), changeUI = {};
     for (var i = 0; i < this.data.ContestItem.branchCount; i++) {
       changeUI['radioItems[' + i + '].checked'] = (i == index);
     }
@@ -121,24 +130,20 @@ Page({
   },
   BindChangeCheckbox: function (e) {
     var UI = {}, status = [0, 1, 2, 3], now = e.detail.value;
-    console.log(now);
     for (var i = 0; i < e.detail.value.length; i++) {
       now[i] = e.detail.value[i].charCodeAt() - 'A'.charCodeAt();
       UI['checkboxItems[' + i + '].checked'] = true;
     }
-    console.log(now);
     var remain = status.filter(el => !now.includes(el));
     for (var i = 0; i < remain.length; i++) {
       UI['checkboxItems[' + remain[i] + '].checked'] = false;
     }
-    console.log(remain);
     this.setData(UI);
   },
   showTestPage: function () {
-    let app = getApp();
     var that = this;
     if (app.globalData.openId == null) return;
-    console.log("Enter request)");
+    console.log("Enter showTestPage request");
     wx.request({
       url: "https://page404.top:8000/Contest/Test/" + app.globalData.currentIndex,
       method: "POST", data: { openId: app.globalData.openId },
@@ -149,7 +154,6 @@ Page({
         that.setData({ 'ContestItem.content': res.content });
         that.setData({ 'ContestItem.branchId': res.branchID });
         that.setData({ 'testType': res.testType });
-        console.log(res);
         switch (res.testType) {
           case '0':
             that.setData({ 'radioItems[0].value': 'A: ' + res.a });
@@ -180,16 +184,13 @@ Page({
                 (res.chosen & 0x08) >> 3
               ]
               for (var i = 0; i < array.length; i++) {
-                if(array[i] > 0)
+                if (array[i] > 0)
                   UI['checkboxItems[' + i + '].checked'] = true;
                 that.setData(UI);
               }
             }
             break;
         }
-
-
-
       },
       fail: function (g) {
         that.setData({ 'ContestItem.content': "似乎无法找到题目" });
@@ -222,7 +223,6 @@ Page({
   ensureView: function (radio, checkbox, textbox) {
     var count = 0, UI = {};
     if (radio) count++; if (checkbox) count++; if (textbox) count++;
-    console.log(count);
     if (count != 1) {
       radio = true; checkbox = false; textbox = false;
     }
@@ -233,6 +233,5 @@ Page({
   },
   onShow: function (e) {
     this.showTestPage();
-    console.log(this.data.answerClass);
   }
 })

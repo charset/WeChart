@@ -9,7 +9,7 @@ App({
         if (sync.data.success) {
           this.globalData.openId = sync.data.openId;
           if (this.globalData.openId) {
-            wx.setStorageSync('openId', this.globalData.openId); console.log("Got OopenId:" + sync.data.openId);
+            wx.setStorageSync('openId', this.globalData.openId); console.log("Got openId:" + sync.data.openId);
           }
           this.globalData.currentIndex = sync.data.currentID;
         }
