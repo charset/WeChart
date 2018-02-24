@@ -14,7 +14,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.request({
-            url: "https://page404.top:8000S/Home/Reset/",
+            url: "https://page404.top/Home/Reset/",
             method: "POST", data: { openId: app.globalData.openId },
             success: deal => {
               if (deal.data.userInfoDeleted == 1) {
@@ -42,7 +42,7 @@ Page({
     let that = this;
     if (app.globalData.openId.length == 0) return;
     wx.request({
-      url: "https://page404.top:8000/Home/Summary", method: "POST",
+      url: "https://page404.top/Home/Summary", method: "POST",
       data: { openId: app.globalData.openId },
       success: summary => {
         console.log(summary);

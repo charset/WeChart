@@ -11,30 +11,10 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首0页"
-      },
-      {
-        "pagePath": "pages/contest/summary",
-        "text": "not main page"
-      },
-      {
-        "pagePath": "pages/contest/test",
-        "text": "开始考试"
-      }
-    ]
-  },
   "networkTimeout": {
     "request": 20000,
     "connectSocket": 20000,
     "uploadFile": 20000,
     "downloadFile": 20000
-  },
-  
-  "navigationBarTitleText": "狼来了",
-  "navigationBarTextStyle": "gray",
-  "navigationBarBackgroundColor": "#000000"
+  }
 }

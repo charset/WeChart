@@ -1,4 +1,4 @@
-const host = "https://page404.top:8000";
+const host = "https://page404.top";
 //const host = "http://localhost:64028";
 
 App({

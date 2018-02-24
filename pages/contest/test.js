@@ -1,4 +1,4 @@
-const host = "https://page404.top:8000";
+const host = "https://page404.top";
 //const host = "http://localhost:64028";
 
 const app = getApp();
@@ -39,7 +39,8 @@ Page({
       case "1"://多选题
         var selected = 0;
         for (var i = 0; i < this.data.ContestItem.branchCount; i++) {
-          if (this.data.checkboxItems[i].checked) selected += 1 << i;
+          if (this.data.checkboxItems[i].checked) selected += (1 << i);
+          console.log(selected);
         }
         console.log("SELECTED: " + selected);
         if (selected > 0) {
@@ -63,7 +64,7 @@ Page({
       success: loc => {
         let p = THAT; console.log(p);
         wx.request({
-          url: "https://page404.top:8000/Contest/Submit/" + app.globalData.currentIndex, method: "POST",
+          url: "https://page404.top/Contest/Submit/" + app.globalData.currentIndex, method: "POST",
           data: { OpenID: app.globalData.openId, Latitude: loc.latitude, Longitude: loc.longitude, Choice: choice },
           success: el => {
             var res = el.data; console.log(el); let Q = p;
@@ -130,14 +131,18 @@ Page({
   },
   BindChangeCheckbox: function (e) {
     var UI = {}, status = [0, 1, 2, 3], now = e.detail.value;
+    console.log(now);
     for (var i = 0; i < e.detail.value.length; i++) {
       now[i] = e.detail.value[i].charCodeAt() - 'A'.charCodeAt();
-      UI['checkboxItems[' + i + '].checked'] = true;
+      UI['checkboxItems[' + now[i] + '].checked'] = true;
     }
+    console.log(now);
     var remain = status.filter(el => !now.includes(el));
     for (var i = 0; i < remain.length; i++) {
       UI['checkboxItems[' + remain[i] + '].checked'] = false;
     }
+    console.log(remain);
+    console.log(UI);
     this.setData(UI);
   },
   showTestPage: function () {
@@ -145,7 +150,7 @@ Page({
     if (app.globalData.openId == null) return;
     console.log("Enter showTestPage request");
     wx.request({
-      url: "https://page404.top:8000/Contest/Test/" + app.globalData.currentIndex,
+      url: "https://page404.top/Contest/Test/" + app.globalData.currentIndex,
       method: "POST", data: { openId: app.globalData.openId },
       success: function (g) {
         var res = g.data, UI = {};

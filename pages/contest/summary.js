@@ -12,7 +12,7 @@ Page({
   ShowSummary: function () {
     let that = this; let app = getApp();
     wx.request({
-      url: "https://page404.top:8000/Home/Summary/",
+      url: "https://page404.top/Home/Summary/",
       method: "POST",
       data: { openId: app.globalData.openId },
       success: succ => {
