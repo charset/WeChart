@@ -10,8 +10,14 @@ App({
           this.globalData.openId = sync.data.openId;
           if (this.globalData.openId) {
             wx.setStorageSync('openId', this.globalData.openId); console.log("Got openId:" + sync.data.openId);
+
+            if(sync.data.currentID == -1){
+              wx.reLaunch({ url: "/pages/contest/summary" });
+            }else{
+              this.globalData.currentIndex = sync.data.currentID;
+              wx.reLaunch({ url: "/pages/contest/test" });
+            }
           }
-          this.globalData.currentIndex = sync.data.currentID;
         }
       },
       fail: () => { console.log("Home/Code Fail"); }

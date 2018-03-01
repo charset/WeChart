@@ -2,7 +2,7 @@ const app = getApp();
 
 Page({
   data: {
-    motto: '42 =>《银河系漫游指南》',
+    motto: '《架构简明测试》',
     userInfo: {}, hasUserInfo: false, canIUse: wx.canIUse('button.open-type.getUserInfo'),
     cmdStartDisabled: true, cmdSummaryDisabled: true, cmdResetUserDisabled: true
   },

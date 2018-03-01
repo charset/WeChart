@@ -12,7 +12,7 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <view class="usermotto">
-    <text class="user-motto">导游需要您的实时地理位置，请允许开启</text>
+    <text class="user-motto">需要您的实时地理位置、头像信息用于统计成绩，请允许开启</text>
   </view>
   <view class="functions">
     <button bindtap="StartTest" disabled="{{cmdStartDisabled}}" type="primary">开始测试</button>
@@ -22,7 +22,7 @@
   <view class="bottom">
     <block>
       <text class="webref">https://page404.top/</text>
-      <text class="icps">ICPS:</text>
+      <text class="icps">ICPS:苏ICP备18008020号-1</text>
       <text class="rm">架构状元狼</text>
     </block>
   </view>
