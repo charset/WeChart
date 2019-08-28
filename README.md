@@ -4,5 +4,3 @@
 Online Test on WECHAT mini programme aka ``WMP`` with multiple choice and multiple choices.
 
 `` single selection and multiple selection ``
-
-This WMP is a front-end page entry. Services are required as: ''https://github.com/charset/OnlineDeja''
